@@ -1,0 +1,10 @@
+# Core dependencies
+fastmcp>=2.0.0
+google-analytics-data>=0.18.0
+google-auth>=2.29.0
+google-api-python-client>=2.130.0
+
+# Development dependencies (optional)
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0
+# ruff>=0.1.0
