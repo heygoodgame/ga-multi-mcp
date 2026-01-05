@@ -9,16 +9,22 @@ This guide walks you through setting up the GA Multi MCP server locally after cl
 - A Google Cloud account
 - Access to Google Analytics 4 properties
 
-## Step 1: Clone and Install
+## Step 1: Install
 
+**Option A: Install directly from GitHub (recommended)**
+```bash
+uv tool install git+https://github.com/heygoodgame/ga-multi-mcp.git
+```
+
+**Option B: Clone and install locally**
 ```bash
 git clone https://github.com/heygoodgame/ga-multi-mcp.git
 cd ga-multi-mcp
-
-# Install as a local tool (recommended)
 uv tool install -e .
+```
 
-# Verify installation
+Verify installation:
+```bash
 ga-multi-mcp --help
 ```
 

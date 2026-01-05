@@ -23,23 +23,14 @@ A Model Context Protocol (MCP) server for querying Google Analytics 4 data acros
 [uv](https://docs.astral.sh/uv/) is the fastest way to install and run:
 
 ```bash
-# Run directly without installing
-uvx ga-multi-mcp
+# Install from GitHub
+uv tool install git+https://github.com/heygoodgame/ga-multi-mcp.git
 
-# Or install globally
-uv tool install ga-multi-mcp
-
-# Or in a project
-uv add ga-multi-mcp
+# Run after installing
+ga-multi-mcp
 ```
 
-### From PyPI
-
-```bash
-pip install ga-multi-mcp
-```
-
-### From Source (Development)
+### From Source
 
 ```bash
 git clone https://github.com/heygoodgame/ga-multi-mcp.git
@@ -110,22 +101,6 @@ Add to your MCP client configuration (e.g., Claude Desktop, Cursor):
 {
   "mcpServers": {
     "ga-multi": {
-      "command": "uvx",
-      "args": ["ga-multi-mcp"],
-      "env": {
-        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/service-account.json"
-      }
-    }
-  }
-}
-```
-
-Or if installed via pip:
-
-```json
-{
-  "mcpServers": {
-    "ga-multi": {
       "command": "ga-multi-mcp",
       "env": {
         "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/service-account.json"
@@ -134,6 +109,8 @@ Or if installed via pip:
   }
 }
 ```
+
+> **Note:** This assumes you've installed with `uv tool install`. If running from source, use `"command": "uv"` with `"args": ["run", "ga-multi-mcp"]` and set the working directory.
 
 ### PTC Framework Configuration
 
