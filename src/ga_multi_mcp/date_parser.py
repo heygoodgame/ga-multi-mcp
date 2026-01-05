@@ -7,7 +7,7 @@ commonly used when querying analytics data.
 
 import re
 from datetime import datetime, timedelta
-from typing import Optional, Tuple
+from typing import Tuple
 
 
 class DateParseError(Exception):

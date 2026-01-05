@@ -13,7 +13,7 @@ from fastmcp import FastMCP
 from fastmcp.exceptions import ToolError
 from pydantic import Field
 
-from .config import ConfigError, get_config
+from .config import ConfigError
 from .date_parser import DateParseError, get_date_range_description, parse_date_range
 from .ga_client import GAClientError, get_ga_client
 from .property_resolver import get_property_resolver
@@ -49,7 +49,7 @@ mcp = FastMCP(
 )
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def list_properties() -> Dict[str, Any]:
     """
     List all accessible GA4 properties.
@@ -75,7 +75,7 @@ async def list_properties() -> Dict[str, Any]:
         raise ToolError(f"Failed to list properties: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def search_properties(
     query: Annotated[str, Field(description="Search query (property name, partial name, or keyword)")]
 ) -> Dict[str, Any]:
@@ -111,7 +111,7 @@ async def search_properties(
         raise ToolError(f"Search failed: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def query_analytics(
     property: Annotated[str, Field(description="Property name, ID, or alias (fuzzy matching supported)")],
     metrics: Annotated[List[str], Field(description="Metrics to query (e.g., ['activeUsers', 'sessions'])")],
@@ -190,7 +190,7 @@ async def query_analytics(
         raise ToolError(f"Query failed: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def query_multiple_properties(
     properties: Annotated[List[str], Field(description="List of property names or IDs to query")],
     metrics: Annotated[List[str], Field(description="Metrics to query across all properties")],
@@ -290,7 +290,7 @@ async def query_multiple_properties(
         raise ToolError(f"Configuration error: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def get_property_metadata(
     property: Annotated[str, Field(description="Property name or ID")]
 ) -> Dict[str, Any]:
@@ -333,7 +333,7 @@ async def get_property_metadata(
         raise ToolError(f"Failed to get metadata: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def query_realtime(
     property: Annotated[str, Field(description="Property name or ID")],
     metrics: Annotated[Optional[List[str]], Field(description="Metrics to query (default: activeUsers)")] = None,
@@ -380,7 +380,7 @@ async def query_realtime(
         raise ToolError(f"Realtime query failed: {e}")
 
 
-@mcp.tool
+@mcp.tool(annotations={"readOnlyHint": True})
 async def get_cache_status() -> Dict[str, Any]:
     """
     Get current cache status for debugging.

@@ -518,7 +518,6 @@ class GAClient:
 
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get cache statistics."""
-        now = datetime.now().timestamp()
         valid_entries = sum(1 for e in self._cache.values() if e.is_valid())
 
         return {
