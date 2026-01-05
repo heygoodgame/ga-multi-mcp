@@ -80,7 +80,7 @@ ga-multi-mcp --help
 
 ## Step 3: Configure Your MCP Client
 
-Choose **one** of the following options:
+Choose the option that matches your MCP client:
 
 ---
 
