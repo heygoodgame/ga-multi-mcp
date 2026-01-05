@@ -436,6 +436,18 @@ async def clear_cache(
 
 def main():
     """Entry point for the MCP server."""
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="GA Multi MCP - Google Analytics 4 Multi-Property MCP Server"
+    )
+    parser.add_argument(
+        "--version", "-v",
+        action="version",
+        version="ga-multi-mcp 0.1.0"
+    )
+    parser.parse_args()
+
     mcp.run()
 
 
